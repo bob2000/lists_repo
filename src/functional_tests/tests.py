@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import unittest
+from django.test.testcases import LiveServerTestCase
 
 ### testuje czy dziala server django
 #browser = webdriver.Firefox()
@@ -9,7 +9,7 @@ import unittest
 #assert 'Django' in browser.title
 ####################################
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
@@ -65,5 +65,5 @@ class NewVisitorTest(unittest.TestCase):
         
         # She visits that URL - her to-do list is still there.
 
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
+# if __name__ == '__main__':
+#     unittest.main(warnings='ignore')
