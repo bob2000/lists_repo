@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase 
 
 ### testuje czy dziala server django
 #browser = webdriver.Firefox()
@@ -9,13 +9,14 @@ from django.test import LiveServerTestCase
 #assert 'Django' in browser.title
 ####################################
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase ):
     def setUp(self):
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
         
     def tearDown(self):
         # Satisfied, she goes back to sleep
+        self.browser.refresh() # abu usunac te dziwne, nieszkodliwe bledy: socket.error: [WinError 10054] An existing connection was forcibly closed by the remote host.
         self.browser.quit()
         
     def check_for_row_in_list_table(self, row_text):
@@ -65,6 +66,7 @@ class NewVisitorTest(LiveServerTestCase):
     
         ## We use a new browser session to make sure that no information
         ## of Edith's is coming through from cookies etc #1
+        self.browser.refresh() # abu usunac te dziwne, nieszkodliwe bledy: socket.error: [WinError 10054] An existing connection was forcibly closed by the remote host.
         self.browser.quit()
         self.browser = webdriver.Firefox()
     
