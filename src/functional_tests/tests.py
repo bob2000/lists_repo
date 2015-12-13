@@ -10,7 +10,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 #assert 'Django' in browser.title
 ####################################
 
-class NewVisitorTest(StaticLiveServerTestCase ):
+class NewVisitorTest(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         for arg in sys.argv:
