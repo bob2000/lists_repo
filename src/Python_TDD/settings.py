@@ -56,7 +56,7 @@ WSGI_APPLICATION = 'Python_TDD.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+print(os.path.join(BASE_DIR, '../../database/db.sqlite3'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
